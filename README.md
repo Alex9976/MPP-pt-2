@@ -11,3 +11,6 @@
 
 ### Lab 4 (Web Sockets)
 Как лабораторная 3, но заменить REST API на обмен данных через Web Sockets.
+
+### Lab 5 (GraphQL)
+Как лабораторные 3 и 4, но на сервере сделать API на GraphQL.
