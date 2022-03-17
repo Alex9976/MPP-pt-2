@@ -71,7 +71,7 @@ module.exports.onSignIn = async function (req, res) {
             res.status(401).json({ message: 'Bad password' })
         }
     } else {
-        res.status(401).json({ message: 'Not signInorized' })
+        res.status(401).json({ message: 'Not authorized' })
     }
 }
 
@@ -86,6 +86,6 @@ module.exports.onSignUp = function (req, res) {
         rw.writeToJSON(usersPath, users)
         res.send(rw.readToJSON(dataPath))
     } else {
-        res.status(401).json({ message: 'Not signUporized' })
+        res.status(401).json({ message: 'Not authorized' })
     }
 }

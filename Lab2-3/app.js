@@ -48,7 +48,7 @@ function writeToJSON(path, obj) {
 
 app.get("/tasks", function (req, res) {
     if (!req.logged) {
-        return res.status(401).json({ message: 'Not signInorized' })
+        return res.status(401).json({ message: 'Not authorized' })
     }
     console.log(req.url)
     res.send(readToJSON(dataPath))
@@ -56,7 +56,7 @@ app.get("/tasks", function (req, res) {
 
 app.get("/download/:taskId/:filename", function (req, res) {
     if (!req.logged) {
-        return res.status(401).json({ message: 'Not signInorized' })
+        return res.status(401).json({ message: 'Not authorized' })
     }
     let path = process.cwd() + "\\uploads\\" + req.params.filename
     let taskId = req.params.taskId
@@ -81,7 +81,7 @@ app.post("/signIn", jsonParser, async function (req, res) {
             res.status(401).json({ message: 'Bad password' })
         }
     } else {
-        res.status(401).json({ message: 'Not signInorized' })
+        res.status(401).json({ message: 'Not authorized' })
     }
 })
 
@@ -96,7 +96,7 @@ app.post("/signUp", jsonParser, function (req, res) {
         writeToJSON(usersPath, users)
         res.send(readToJSON(dataPath))
     } else {
-        res.status(401).json({ message: 'Not signUporized' })
+        res.status(401).json({ message: 'Not authorized' })
     }
 })
 
@@ -104,7 +104,7 @@ let lastFile
 
 app.post("/upload", function (req, res, next) {
     if (!req.logged) {
-        return res.status(401).json({ message: 'Not signInorized' })
+        return res.status(401).json({ message: 'Not authorized' })
     }
     console.log(req.file)
     lastFile = req.file
@@ -113,7 +113,7 @@ app.post("/upload", function (req, res, next) {
 
 app.post("/tasks", jsonParser, function (req, res) {
     if (!req.logged) {
-        return res.status(401).json({ message: 'Not signInorized' })
+        return res.status(401).json({ message: 'Not authorized' })
     }
     if (!req.body)
         return res.sendStatus(404)
@@ -140,7 +140,7 @@ app.post("/tasks", jsonParser, function (req, res) {
 
 app.put("/tasks/complete/:taskId", jsonParser, function (req, res) {
     if (!req.logged) {
-        return res.status(401).json({ message: 'Not signInorized' })
+        return res.status(401).json({ message: 'Not authorized' })
     }
     if (!req.body)
         return res.sendStatus(404)
@@ -150,7 +150,6 @@ app.put("/tasks/complete/:taskId", jsonParser, function (req, res) {
     const index = data.tasks.findIndex(x => x.id == parseInt(taskId))
     data.tasks[index].isComplete = true
 
-    console.log("POST task")
     console.log(req.body)
 
     writeToJSON(dataPath, data)
@@ -159,7 +158,7 @@ app.put("/tasks/complete/:taskId", jsonParser, function (req, res) {
 
 app.delete("/tasks/:taskId", function (req, res) {
     if (!req.logged) {
-        return res.status(401).json({ message: 'Not signInorized' })
+        return res.status(401).json({ message: 'Not authorized' })
     }
 
     const taskId = req.params.taskId

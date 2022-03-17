@@ -6,23 +6,6 @@
       "expires": "2022-05-12T19:36",
       "description": "1",
       "isComplete": true
-    },
-    {
-      "id": 9,
-      "name": "2",
-      "expires": "2022-03-13T16:57",
-      "description": "2",
-      "isComplete": false,
-      "file": {
-        "fieldname": "task-files",
-        "originalname": "ngrok.exe",
-        "encoding": "7bit",
-        "mimetype": "application/x-msdownload",
-        "destination": "uploads",
-        "filename": "888bf43e6c7c10c74e0eda244cd33ef0",
-        "path": "uploads\\888bf43e6c7c10c74e0eda244cd33ef0",
-        "size": 30718976
-      }
     }
   ]
 }
